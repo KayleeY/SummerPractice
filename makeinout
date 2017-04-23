@@ -1,0 +1,8 @@
+#! /bin/bash
+
+for tests in $(cat $1); do
+  cat $1 > $tests.in > $tests.ex > rmove.txt
+done
+
+rm rmove.txt
+ 

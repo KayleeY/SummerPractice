@@ -1,0 +1,14 @@
+#! /bin/bash
+
+# ./test ./execute names
+
+
+for files in $(cat $2); do
+    $1 < $files.in > temp
+    diff temp $files.ex > /dev/null
+    if [ $? -ne 0 ] ; then
+	echo "$files failed"
+    fi
+done
+
+rm temp
