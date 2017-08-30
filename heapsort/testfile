@@ -1,0 +1,12 @@
+#! /bin/bash
+
+for test in $(cat $2); do
+    ./$1 < "$test.in" > temp
+    diff temp $test.exp 2>error
+    if [ $! -ne 0 ] ; then
+	echo "$test failed"
+    fi
+done
+
+rm temp
+rm error
